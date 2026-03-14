@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { ArrowLeft, ArrowUp, ArrowDown, ImagePlus, RefreshCw, Trash2, Pencil } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { apiUrl } from '../config/api';
 
 type Banner = {
   id: string;
@@ -53,7 +54,7 @@ export default function Banners() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('http://localhost:3001/api/admin/banners', {
+      const res = await fetch(apiUrl('/admin/banners'), {
         headers: { 'x-admin-key': adminKey },
       });
       const data = await parseResponse(res);
@@ -112,8 +113,8 @@ export default function Banners() {
       }
 
       const url = editId
-        ? `http://localhost:3001/api/admin/banners/${editId}`
-        : 'http://localhost:3001/api/admin/banners';
+        ? apiUrl(`/admin/banners/${editId}`)
+        : apiUrl('/admin/banners');
 
       const res = await fetch(url, {
         method: editId ? 'PUT' : 'POST',
@@ -140,7 +141,7 @@ export default function Banners() {
   const handleDelete = async (id: string) => {
     if (!window.confirm('Delete this banner slide?')) return;
     try {
-      const res = await fetch(`http://localhost:3001/api/admin/banners/${id}`, {
+      const res = await fetch(apiUrl(`/admin/banners/${id}`), {
         method: 'DELETE',
         headers: { 'x-admin-key': adminKey },
       });
@@ -165,7 +166,7 @@ export default function Banners() {
     setBanners(reordered);
 
     try {
-      const res = await fetch('http://localhost:3001/api/admin/banners/reorder', {
+      const res = await fetch(apiUrl('/admin/banners/reorder'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

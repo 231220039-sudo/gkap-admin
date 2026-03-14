@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Lock } from 'lucide-react';
+import { apiUrl } from '../config/api';
 
 export default function Login() {
   const [key, setKey] = useState('');
@@ -13,7 +14,7 @@ export default function Login() {
 
     // Call the backend to verify the key
     try {
-      const res = await fetch('http://localhost:3001/api/admin/login', {
+      const res = await fetch(apiUrl('/admin/login'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ adminKey: key }),

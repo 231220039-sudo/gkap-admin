@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Package, X, ExternalLink, RefreshCw, ArrowUp, ArrowDown } from 'lucide-react';
 import { ThreeShirtViewer } from '../components/customizer/ThreeShirtViewer';
 import { Link } from 'react-router-dom';
+import { apiUrl } from '../config/api';
 
 const ORDER_NOTES_KEY = 'gkap_admin_order_notes_v1';
 
@@ -84,7 +85,7 @@ export default function Dashboard() {
         return;
       }
 
-      const res = await fetch('http://localhost:3001/api/admin/orders', {
+      const res = await fetch(apiUrl('/admin/orders'), {
         headers: { 'x-admin-key': adminKey },
       });
 
@@ -108,7 +109,7 @@ export default function Dashboard() {
   const fetchProducts = async () => {
     setProductsLoading(true);
     try {
-      const res = await fetch('http://localhost:3001/api/products');
+      const res = await fetch(apiUrl('/products'));
       if (!res.ok) {
         const data = await res.json();
         throw new Error(data.error || 'Failed to fetch products');
@@ -273,7 +274,7 @@ export default function Dashboard() {
         return;
       }
 
-      const res = await fetch('http://localhost:3001/api/products', {
+      const res = await fetch(apiUrl('/products'), {
         method: 'POST',
         body: formData,
       });
@@ -307,7 +308,7 @@ export default function Dashboard() {
         return;
       }
 
-      const res = await fetch(`http://localhost:3001/api/products/${editingProductId}`, {
+      const res = await fetch(apiUrl(`/products/${editingProductId}`), {
         method: 'PUT',
         body: formData,
       });
@@ -331,7 +332,7 @@ export default function Dashboard() {
     if (!window.confirm('Delete this product?')) return;
 
     try {
-      const res = await fetch(`http://localhost:3001/api/products/${productId}`, {
+      const res = await fetch(apiUrl(`/products/${productId}`), {
         method: 'DELETE',
       });
 
@@ -359,7 +360,7 @@ export default function Dashboard() {
     setProducts(reordered);
 
     try {
-      const res = await fetch('http://localhost:3001/api/products/reorder', {
+      const res = await fetch(apiUrl('/products/reorder'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ productIds: reordered.map((p) => p.id) }),
