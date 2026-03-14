@@ -1,0 +1,520 @@
+@import url('https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+.animate-gradient {
+  animation: gradientMove 10s ease infinite;
+}
+
+/* G-KAP Design System - Modern, Youth-Focused, Premium Yet Approachable
+   Inspired by streetwear brands with soft neon accents and clean aesthetics
+*/
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  :root {
+    /* Core Colors - Clean and bright foundation */
+    --background: 209 40% 96%;
+    --foreground: 222 47% 11%;
+
+    /* Cards with subtle warmth */
+    --card: 210 40% 98%;
+    --card-foreground: 222 47% 11%;
+
+    /* Popover */
+    --popover: 214 31% 91%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Primary - Soft Coral/Peach (energetic but soft) */
+    --primary: 200 98% 39%;
+    --primary-foreground: 204 100% 97%;
+
+    /* Secondary - Mint/Teal (fresh and youthful) */
+    --secondary: 215 24% 26%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted - Soft gray with warmth */
+    --muted: 215 20% 65%;
+    --muted-foreground: 222 47% 11%;
+
+    /* Accent - Lavender (creative/artistic) */
+    --accent: 210 40% 98%;
+    --accent-foreground: 215 19% 34%;
+
+    /* Destructive */
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 85% 97%;
+
+    /* Borders and inputs */
+    --border: 212 26% 83%;
+    --input: 212 26% 83%;
+    --ring: 200 98% 39%;
+
+    --radius: 0.5rem;
+
+    /* Extended palette for G-KAP brand */
+    --coral: 12 90% 65%;
+    --coral-light: 12 90% 95%;
+    --mint: 168 60% 70%;
+    --mint-light: 168 60% 95%;
+    --lavender: 270 60% 75%;
+    --lavender-light: 270 60% 95%;
+    --sunflower: 45 95% 65%;
+    --sunflower-light: 45 95% 95%;
+    --sky: 200 80% 70%;
+    --sky-light: 200 80% 95%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(12 90% 65%), hsl(35 90% 60%));
+    --gradient-secondary: linear-gradient(135deg, hsl(168 60% 70%), hsl(200 70% 70%));
+    --gradient-accent: linear-gradient(135deg, hsl(270 60% 75%), hsl(300 60% 75%));
+    --gradient-hero: linear-gradient(135deg, hsl(12 90% 97%), hsl(168 60% 97%), hsl(270 60% 97%));
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(12 90% 95%) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(168 60% 95%) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, hsl(270 60% 95%) 0px, transparent 50%),
+                     radial-gradient(at 80% 100%, hsl(45 95% 95%) 0px, transparent 50%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(240 10% 10% / 0.08);
+    --shadow-medium: 0 8px 30px -6px hsl(240 10% 10% / 0.12);
+    --shadow-large: 0 20px 50px -12px hsl(240 10% 10% / 0.15);
+    --shadow-glow-coral: 0 8px 30px -6px hsl(12 90% 65% / 0.35);
+    --shadow-glow-mint: 0 8px 30px -6px hsl(168 60% 70% / 0.35);
+
+    /* Sidebar (for potential admin panel later) */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 200 98% 39%;
+    --sidebar-primary-foreground: 204 100% 97%;
+    --sidebar-accent: 215 24% 26%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 212 26% 83%;
+    --sidebar-ring: 200 98% 39%;
+    --chart-1: 198 93% 59%;
+    --chart-2: 213 93% 67%;
+    --chart-3: 215 20% 65%;
+    --chart-4: 215 16% 46%;
+    --chart-5: 215 19% 34%;
+    --sidebar: 210 40% 98%;
+    --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+    --font-serif: 'Lora', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+    --font-mono: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
+    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+    --tracking-normal: 0em;
+    --spacing: 0.25rem;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 217 32% 17%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 215 24% 26%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 198 93% 59%;
+    --primary-foreground: 204 80% 15%;
+
+    --secondary: 212 26% 83%;
+    --secondary-foreground: 228 84% 4%;
+
+    --muted: 215 16% 46%;
+    --muted-foreground: 210 40% 98%;
+
+    --accent: 228 84% 4%;
+    --accent-foreground: 215 20% 65%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 85% 97%;
+
+    --border: 215 19% 34%;
+    --input: 215 19% 34%;
+    --ring: 198 93% 59%;
+
+    --coral: 12 90% 60%;
+    --coral-light: 12 50% 15%;
+    --mint: 168 50% 50%;
+    --mint-light: 168 40% 12%;
+    --lavender: 270 50% 60%;
+    --lavender-light: 270 40% 12%;
+    --sunflower: 45 80% 55%;
+    --sunflower-light: 45 50% 12%;
+    --sky: 200 70% 55%;
+    --sky-light: 200 50% 12%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(12 50% 8%), hsl(168 40% 8%), hsl(270 40% 8%));
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(12 50% 12%) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(168 40% 12%) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, hsl(270 40% 12%) 0px, transparent 50%),
+                     radial-gradient(at 80% 100%, hsl(45 50% 12%) 0px, transparent 50%);
+
+    --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+    --shadow-medium: 0 8px 30px -6px hsl(0 0% 0% / 0.4);
+    --shadow-large: 0 20px 50px -12px hsl(0 0% 0% / 0.5);
+    --shadow-glow-coral: 0 8px 30px -6px hsl(12 90% 60% / 0.4);
+    --shadow-glow-mint: 0 8px 30px -6px hsl(168 50% 50% / 0.4);
+
+    --sidebar-background: 240 10% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 198 93% 59%;
+    --sidebar-primary-foreground: 204 80% 15%;
+    --sidebar-accent: 215 20% 65%;
+    --sidebar-accent-foreground: 228 84% 4%;
+    --sidebar-border: 215 19% 34%;
+    --sidebar-ring: 198 93% 59%;
+    --chart-1: 199 95% 73%;
+    --chart-2: 211 96% 78%;
+    --chart-3: 215 20% 65%;
+    --chart-4: 215 16% 46%;
+    --chart-5: 215 19% 34%;
+    --sidebar: 217 32% 17%;
+    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
+    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Animated gradient backgrounds */
+  .bg-gradient-mesh {
+    background: var(--gradient-mesh);
+    background-color: hsl(var(--background));
+  }
+
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-background/80 backdrop-blur-xl border border-border/50;
+  }
+
+  /* Animated underline for links */
+  .link-underline {
+    @apply relative;
+  }
+
+  .link-underline::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-medium hover:-translate-y-1;
+  }
+
+  /* Product image zoom on hover */
+  .product-image-zoom {
+    @apply overflow-hidden;
+  }
+
+  .product-image-zoom img {
+    @apply transition-transform duration-500 ease-out;
+  }
+
+  .product-image-zoom:hover img {
+    @apply scale-110;
+  }
+
+  /* Badge styles */
+  .badge-coral {
+    @apply bg-coral-light text-coral;
+  }
+
+  .badge-mint {
+    @apply bg-mint-light text-mint;
+  }
+
+  .badge-lavender {
+    @apply bg-lavender-light text-lavender;
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Animate on scroll placeholder */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Floating animation */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Pulse glow */
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px hsl(var(--primary) / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(var(--primary) / 0.5); }
+  }
+}
+
+@layer utilities {
+  /* Text gradient utility */
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .text-gradient-secondary {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-secondary);
+  }
+
+  /* Shadow utilities */
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+
+  .shadow-large {
+    box-shadow: var(--shadow-large);
+  }
+
+  .shadow-glow-coral {
+    box-shadow: var(--shadow-glow-coral);
+  }
+
+  .shadow-glow-mint {
+    box-shadow: var(--shadow-glow-mint);
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+  /* Admin color theme (https://colorhunt.co/palette/4060934c8ce491d06cfff799) */
+  :root {
+    --admin-ink: #406093;
+    --admin-primary: #4c8ce4;
+    --admin-accent: #91d06c;
+    --admin-bg: #E5E7EB;
+    --admin-bg-soft: #E5E7EB;
+  }
+
+  .admin-theme,
+  .admin-login-theme {
+    color: var(--admin-ink);
+  }
+
+  .admin-theme {
+    background:
+      radial-gradient(circle at 0% 0%, rgba(76, 140, 228, 0.2), transparent 40%),
+      radial-gradient(circle at 100% 100%, rgba(145, 208, 108, 0.24), transparent 42%),
+      var(--admin-bg);
+  }
+
+  .admin-login-theme {
+    background: linear-gradient(140deg, #406093 0%, #4c8ce4 48%, #91d06c 100%);
+  }
+
+  .admin-theme .bg-white,
+  .admin-login-theme .bg-white {
+    background-color: var(--admin-bg-soft) !important;
+  }
+
+  .admin-theme .bg-slate-50,
+  .admin-login-theme .bg-slate-50 {
+    background-color: #F3F4F6 !important;
+  }
+
+  .admin-theme .bg-slate-100,
+  .admin-login-theme .bg-slate-100 {
+    background-color: rgba(76, 140, 228, 0.14) !important;
+  }
+
+  .admin-theme .bg-slate-200,
+  .admin-login-theme .bg-slate-200 {
+    background-color: rgba(145, 208, 108, 0.34) !important;
+  }
+
+  .admin-theme .text-slate-900,
+  .admin-theme .text-slate-700,
+  .admin-theme .text-slate-600,
+  .admin-theme .text-slate-500,
+  .admin-login-theme .text-slate-900,
+  .admin-login-theme .text-slate-700,
+  .admin-login-theme .text-slate-600,
+  .admin-login-theme .text-slate-500,
+  .admin-login-theme .text-slate-400,
+  .admin-login-theme .text-slate-300 {
+    color: var(--admin-ink) !important;
+  }
+
+  .admin-theme .border,
+  .admin-theme .border-b,
+  .admin-theme .border-slate-100,
+  .admin-theme .border-slate-200,
+  .admin-theme .border-slate-300,
+  .admin-theme .border-slate-700,
+  .admin-theme .border-slate-800,
+  .admin-login-theme .border,
+  .admin-login-theme .border-slate-700,
+  .admin-login-theme .border-slate-800 {
+    border-color: rgba(64, 96, 147, 0.25) !important;
+  }
+
+  .admin-theme .bg-blue-600,
+  .admin-login-theme .bg-blue-600 {
+    background-color: var(--admin-primary) !important;
+    color: #ffffff !important;
+  }
+
+  .admin-theme .bg-green-600,
+  .admin-login-theme .bg-green-600 {
+    background-color: var(--admin-accent) !important;
+    color: var(--admin-ink) !important;
+  }
+
+  .admin-theme .hover\:bg-blue-700:hover,
+  .admin-login-theme .hover\:bg-blue-700:hover {
+    background-color: var(--admin-ink) !important;
+  }
+
+  .admin-theme .hover\:bg-green-700:hover,
+  .admin-login-theme .hover\:bg-green-700:hover {
+    background-color: #7ebf57 !important;
+  }
+
+  .admin-theme .text-blue-600,
+  .admin-theme .hover\:text-blue-800:hover,
+  .admin-login-theme .text-blue-500 {
+    color: var(--admin-primary) !important;
+  }
+
+  .admin-theme .text-green-600,
+  .admin-theme .hover\:text-green-700:hover {
+    color: var(--admin-accent) !important;
+  }
+
+  .admin-theme .bg-blue-50,
+  .admin-login-theme .bg-blue-500\/10 {
+    background-color: rgba(76, 140, 228, 0.14) !important;
+  }
+
+  .admin-theme .bg-red-50,
+  .admin-login-theme .bg-red-50 {
+    background-color: rgba(229, 231, 235, 0.85) !important;
+  }
+
+  .admin-theme .text-red-600,
+  .admin-theme .hover\:text-red-700:hover,
+  .admin-theme .text-red-800,
+  .admin-login-theme .text-red-400 {
+    color: var(--admin-ink) !important;
+  }
+
+  .admin-theme .hover\:bg-slate-50:hover,
+  .admin-theme .hover\:bg-slate-100:hover,
+  .admin-login-theme .hover\:bg-slate-50:hover {
+    background-color: rgba(145, 208, 108, 0.2) !important;
+  }
+
+  .admin-theme .bg-emerald-100,
+  .admin-theme .bg-yellow-100 {
+    background-color: rgba(145, 208, 108, 0.24) !important;
+  }
+
+  .admin-theme .text-emerald-700,
+  .admin-theme .text-emerald-800,
+  .admin-theme .text-yellow-800 {
+    color: var(--admin-ink) !important;
+  }
