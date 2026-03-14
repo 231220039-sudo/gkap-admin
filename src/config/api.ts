@@ -1,3 +1,4 @@
+// Local fallback is only used during local development.
 const LOCAL_API_URL = 'http://localhost:3001/api';
 
 const trimTrailingSlash = (value: string) => value.replace(/\/+$/, '');
