@@ -104,8 +104,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     // Do not reload or redirect here; let the caller handle navigation
   };
 
-  // Use environment variable for frontend base URL
-  const frontendUrl = import.meta.env.VITE_FRONTEND_URL || window.location.origin;
+  // OAuth should always return to the currently-open domain.
+  // This avoids stale/deleted deployment URLs when domain is changed.
+  const frontendUrl =
+    (typeof window !== 'undefined' ? window.location.origin : '') ||
+    (import.meta.env.VITE_FRONTEND_URL?.trim() || '');
   const signInWithGoogle = async () => {
     const redirectTo = `${frontendUrl}/shop`;
     console.log("VITE_FRONTEND_URL:", import.meta.env.VITE_FRONTEND_URL);
